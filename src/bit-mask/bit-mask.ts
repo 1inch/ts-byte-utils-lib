@@ -2,6 +2,10 @@ import assert from 'assert'
 
 /**
  * Class to define bit mask: new BitMask(16, 32) is for bits from [16, 32) => 0xffff0000
+ *
+ * @see BN.getMask
+ * @see BN.setMask
+ * @see BN.clearMask
  */
 export class BitMask {
     public readonly offset: bigint

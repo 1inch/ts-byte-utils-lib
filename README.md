@@ -35,6 +35,8 @@ Check that string is valid hex with 0x prefix and length is even
 
 ## :factory: BitMask
 
+Class to define bit mask: new BitMask(16, 32) is for bits from [16, 32) => 0xffff0000
+
 ### Methods
 
 - [toString](#gear-tostring)
