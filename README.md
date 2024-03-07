@@ -262,7 +262,7 @@ Caution: value will be rounded for numbers > `Number.MAX_SAFE_INTEGER`
 
 ## :factory: BytesIter
 
-Class to iterate though bytes string by parsing individual bytes
+Class to iterate through bytes string by parsing individual bytes
 
 ### Methods
 
