@@ -4,7 +4,7 @@ Contains helpers to work with bytes
 ## Installation
 
 ```shell
-npm install '@1inch/byte-utils'
+npm install @1inch/byte-utils
 ```
 
 ## Docs
