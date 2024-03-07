@@ -35,7 +35,7 @@ jobs:
         run: cp package.json ./dist
 
       - name: Publish 🚀
-        run: pnpm publish --no-git-checks
+        run: pnpm publish --no-git-checks --access=public
         working-directory: dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
