@@ -116,6 +116,7 @@ Immutable, all methods return new value
 ### Methods
 
 - [fromNumber](#gear-fromnumber)
+- [fromHex](#gear-fromhex)
 - [add](#gear-add)
 - [sub](#gear-sub)
 - [setBit](#gear-setbit)
@@ -138,6 +139,12 @@ Immutable, all methods return new value
 | Method | Type |
 | ---------- | ---------- |
 | `fromNumber` | `(n: number) => BN` |
+
+#### :gear: fromHex
+
+| Method | Type |
+| ---------- | ---------- |
+| `fromHex` | `(hex: string) => BN` |
 
 #### :gear: add
 
@@ -427,11 +434,16 @@ Returns bytes as single bigint value
 
 #### :gear: asHex
 
-Returns 0x prefixed hex string
+Returns hex string
 
 | Method | Type |
 | ---------- | ---------- |
-| `asHex` | `() => string` |
+| `asHex` | `(prefixed?: boolean) => string` |
+
+Parameters:
+
+* `prefixed`: should be string prefixed with 0x or not, true by default
+
 
 
 <!-- TSDOC_END -->
