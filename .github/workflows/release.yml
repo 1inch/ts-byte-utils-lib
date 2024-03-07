@@ -1,4 +1,4 @@
-name: Publish new version
+name: Release new version
 
 on:
   workflow_dispatch:
@@ -36,11 +36,6 @@ jobs:
         with:
           node-version: 18
           cache: pnpm
-
-      - name: Auth in GitHub private registry npm
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
-          echo "@1inch:registry=https://npm.pkg.github.com" >> .npmrc
 
       - name: Install Dev Dependencies
         run: pnpm install -D
