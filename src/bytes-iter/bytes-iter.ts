@@ -1,6 +1,6 @@
 import assert from 'assert'
 import {isHexBytes} from '../validations'
-import {add0x} from '../utils/zero-x-prefix'
+import {add0x} from '../utils'
 
 /**
  * Class to iterate though bytes string by parsing individual bytes
@@ -60,7 +60,15 @@ export class BytesIter {
         return this.nextBytes(4)
     }
 
+    public nextUint128(): bigint {
+        return this.nextBytes(16)
+    }
+
     public nextUint160(): bigint {
         return this.nextBytes(20)
+    }
+
+    public nextUint256(): bigint {
+        return this.nextBytes(32)
     }
 }

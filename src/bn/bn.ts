@@ -1,6 +1,7 @@
-import {BitMask} from '../bit-mask/bit-mask'
 import assert from 'assert'
-import {add0x} from '../utils/zero-x-prefix'
+import {BitMask} from '../bit-mask/bit-mask'
+import {add0x} from '../utils'
+import {isHexString} from '../validations'
 
 /**
  * Class to work with bits in bignumber
@@ -11,6 +12,26 @@ export class BN {
 
     static fromNumber(n: number): BN {
         return new BN(BigInt(n))
+    }
+
+    static fromHex(hex: string): BN {
+        assert(isHexString(hex), 'Invalid hex')
+
+        return new BN(BigInt(hex))
+    }
+
+    /**
+     * Add value
+     */
+    public add(other: BN): BN {
+        return new BN(this.value + other.value)
+    }
+
+    /**
+     * Subtract value
+     */
+    public sub(other: BN): BN {
+        return new BN(this.value - other.value)
     }
 
     public setBit(n: bigint, value: 1 | 0): BN {
