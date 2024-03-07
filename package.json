@@ -1,9 +1,16 @@
 {
   "name": "@1inch/byte-utils",
   "version": "0.0.6",
-  "description": "Contains helpers to work with bytes\n\n",
+  "description": "Contains helpers to work with bytes",
   "author": "@1inch",
   "license": "MIT",
+  "private": false,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:1inch/ts-byte-utils-lib.git"
+  },
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

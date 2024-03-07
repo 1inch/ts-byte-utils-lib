@@ -31,6 +31,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Copy package.json to dist
+        run: cp package.json ./dist
+
       - name: Publish 🚀
         run: pnpm publish --no-git-checks
         working-directory: dist
@@ -63,6 +66,9 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Copy package.json to dist
+        run: cp package.json ./dist
 
       - name: Publish 🚀
         run: pnpm publish --no-git-checks
