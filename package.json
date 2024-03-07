@@ -5,8 +5,9 @@
   "author": "@1inch",
   "license": "MIT",
   "private": false,
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "LICENSE", "README.md", "package.json"],
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:1inch/ts-byte-utils-lib.git"
