@@ -62,3 +62,4 @@ jobs:
           git push
           git push --tags
           gh release create v${{ steps.version.outputs.NEW_VERSION }} --notes-file CHANGELOG.md
+          gh workflow run publish.yml -r v${{ steps.version.outputs.NEW_VERSION }}
