@@ -3,7 +3,7 @@ import {isHexBytes} from '../validations'
 import {add0x} from '../utils'
 
 /**
- * Class to iterate though bytes string by parsing individual bytes
+ * Class to iterate through bytes string by parsing individual bytes
  *
  * @example
  * const iter = new BytesIter('0xdeadbeef')
