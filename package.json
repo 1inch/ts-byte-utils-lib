@@ -1,9 +1,9 @@
 {
   "name": "@1inch/byte-utils",
   "version": "0.0.6",
-  "description": "Lib desc",
+  "description": "Contains helpers to work with bytes\n\n",
   "author": "@1inch",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
