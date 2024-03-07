@@ -24,4 +24,9 @@ describe('BytesBuilder', () => {
         babe.addUint16(new BN(0xbaben))
         expect(babe.asHex()).toEqual('0xf00dbabe')
     })
+
+    it('Should transform to hex', () => {
+        expect(new BytesBuilder('0xdeadbeef').asHex()).toEqual('0xdeadbeef')
+        expect(new BytesBuilder('0xdeadbeef').asHex(false)).toEqual('deadbeef')
+    })
 })

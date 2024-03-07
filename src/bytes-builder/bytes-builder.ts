@@ -102,10 +102,12 @@ export class BytesBuilder {
     }
 
     /**
-     * Returns 0x prefixed hex string
+     * Returns hex string
+     *
+     * @param prefixed should be string prefixed with 0x or not, true by default
      */
-    public asHex(): string {
-        return this.bytes
+    public asHex(prefixed = true): string {
+        return prefixed ? this.bytes : this.bytes.slice(2)
     }
 
     private append(bytes: string): void {
