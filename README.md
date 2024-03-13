@@ -266,6 +266,9 @@ Class to iterate through bytes string by parsing individual bytes
 
 ### Methods
 
+- [BigInt](#gear-bigint)
+- [String](#gear-string)
+- [rest](#gear-rest)
 - [isEmpty](#gear-isempty)
 - [nextByte](#gear-nextbyte)
 - [nextBytes](#gear-nextbytes)
@@ -277,6 +280,26 @@ Class to iterate through bytes string by parsing individual bytes
 - [nextUint160](#gear-nextuint160)
 - [nextUint256](#gear-nextuint256)
 
+#### :gear: BigInt
+
+| Method | Type |
+| ---------- | ---------- |
+| `BigInt` | `(bytes: string) => BytesIter<bigint>` |
+
+#### :gear: String
+
+| Method | Type |
+| ---------- | ---------- |
+| `String` | `(bytes: string) => BytesIter<string>` |
+
+#### :gear: rest
+
+Returns all not consumed bytes
+
+| Method | Type |
+| ---------- | ---------- |
+| `rest` | `() => T` |
+
 #### :gear: isEmpty
 
 | Method | Type |
@@ -287,55 +310,55 @@ Class to iterate through bytes string by parsing individual bytes
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextByte` | `() => bigint` |
+| `nextByte` | `() => T` |
 
 #### :gear: nextBytes
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextBytes` | `(n: number) => bigint` |
+| `nextBytes` | `(n: number) => T` |
 
 #### :gear: nextUint8
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint8` | `() => bigint` |
+| `nextUint8` | `() => T` |
 
 #### :gear: nextUint16
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint16` | `() => bigint` |
+| `nextUint16` | `() => T` |
 
 #### :gear: nextUint24
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint24` | `() => bigint` |
+| `nextUint24` | `() => T` |
 
 #### :gear: nextUint32
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint32` | `() => bigint` |
+| `nextUint32` | `() => T` |
 
 #### :gear: nextUint128
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint128` | `() => bigint` |
+| `nextUint128` | `() => T` |
 
 #### :gear: nextUint160
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint160` | `() => bigint` |
+| `nextUint160` | `() => T` |
 
 #### :gear: nextUint256
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint256` | `() => bigint` |
+| `nextUint256` | `() => T` |
 
 
 ## :factory: BytesBuilder
