@@ -6,29 +6,47 @@ import {add0x} from '../utils'
  * Class to iterate through bytes string by parsing individual bytes
  *
  * @example
- * const iter = new BytesIter('0xdeadbeef')
+ * const iter = BytesIter.BigInt('0xdeadbeef')
  * iter.nextByte() == BigInt(0xde)
  * iter.nextByte() == BigInt(0xad)
  * iter.nextBytes(2) == BigInt(0xbeef)
  */
-export class BytesIter {
+export class BytesIter<T> {
     private bytes: string
 
-    constructor(bytes: string) {
+    private constructor(
+        bytes: string,
+        private readonly ResultType: (val: string) => T
+    ) {
         assert(isHexBytes(bytes), 'invalid bytes value')
 
         this.bytes = bytes.slice(2) // trim 0x
+    }
+
+    static BigInt(bytes: string): BytesIter<bigint> {
+        return new BytesIter(bytes, BigInt)
+    }
+
+    static String(bytes: string): BytesIter<string> {
+        return new BytesIter(bytes, String)
+    }
+
+    /**
+     * Returns all not consumed bytes
+     */
+    public rest(): T {
+        return this.ResultType(add0x(this.bytes))
     }
 
     public isEmpty(): boolean {
         return this.bytes.length === 0
     }
 
-    public nextByte(): bigint {
+    public nextByte(): T {
         return this.nextBytes(1)
     }
 
-    public nextBytes(n: number): bigint {
+    public nextBytes(n: number): T {
         const cnt = n * 2
 
         if (this.bytes.length < cnt) {
@@ -41,34 +59,34 @@ export class BytesIter {
 
         this.bytes = this.bytes.slice(cnt)
 
-        return BigInt(add0x(bytes))
+        return this.ResultType(add0x(bytes))
     }
 
-    public nextUint8(): bigint {
+    public nextUint8(): T {
         return this.nextByte()
     }
 
-    public nextUint16(): bigint {
+    public nextUint16(): T {
         return this.nextBytes(2)
     }
 
-    public nextUint24(): bigint {
+    public nextUint24(): T {
         return this.nextBytes(3)
     }
 
-    public nextUint32(): bigint {
+    public nextUint32(): T {
         return this.nextBytes(4)
     }
 
-    public nextUint128(): bigint {
+    public nextUint128(): T {
         return this.nextBytes(16)
     }
 
-    public nextUint160(): bigint {
+    public nextUint160(): T {
         return this.nextBytes(20)
     }
 
-    public nextUint256(): bigint {
+    public nextUint256(): T {
         return this.nextBytes(32)
     }
 }
