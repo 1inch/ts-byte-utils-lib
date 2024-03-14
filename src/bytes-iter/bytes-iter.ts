@@ -2,6 +2,11 @@ import assert from 'assert'
 import {isHexBytes} from '../validations'
 import {add0x} from '../utils'
 
+enum Side {
+    Front,
+    Back
+}
+
 /**
  * Class to iterate through bytes string by parsing individual bytes
  *
@@ -12,6 +17,8 @@ import {add0x} from '../utils'
  * iter.nextBytes(2) == BigInt(0xbeef)
  */
 export class BytesIter<T> {
+    public static SIDE = Side
+
     private bytes: string
 
     private constructor(
@@ -42,11 +49,11 @@ export class BytesIter<T> {
         return this.bytes.length === 0
     }
 
-    public nextByte(): T {
-        return this.nextBytes(1)
+    public nextByte(side = Side.Front): T {
+        return this.nextBytes(1, side)
     }
 
-    public nextBytes(n: number): T {
+    public nextBytes(n: number, side = Side.Front): T {
         const cnt = n * 2
 
         if (this.bytes.length < cnt) {
@@ -55,38 +62,42 @@ export class BytesIter<T> {
             )
         }
 
-        const bytes = this.bytes.slice(0, cnt)
+        const isFront = side === Side.Front
 
-        this.bytes = this.bytes.slice(cnt)
+        const bytes = isFront
+            ? this.bytes.slice(0, cnt)
+            : this.bytes.slice(-cnt)
+
+        this.bytes = isFront ? this.bytes.slice(cnt) : this.bytes.slice(0, -cnt)
 
         return this.ResultType(add0x(bytes))
     }
 
-    public nextUint8(): T {
-        return this.nextByte()
+    public nextUint8(side = Side.Front): T {
+        return this.nextByte(side)
     }
 
-    public nextUint16(): T {
-        return this.nextBytes(2)
+    public nextUint16(side = Side.Front): T {
+        return this.nextBytes(2, side)
     }
 
-    public nextUint24(): T {
-        return this.nextBytes(3)
+    public nextUint24(side = Side.Front): T {
+        return this.nextBytes(3, side)
     }
 
-    public nextUint32(): T {
-        return this.nextBytes(4)
+    public nextUint32(side = Side.Front): T {
+        return this.nextBytes(4, side)
     }
 
-    public nextUint128(): T {
-        return this.nextBytes(16)
+    public nextUint128(side = Side.Front): T {
+        return this.nextBytes(16, side)
     }
 
-    public nextUint160(): T {
-        return this.nextBytes(20)
+    public nextUint160(side = Side.Front): T {
+        return this.nextBytes(20, side)
     }
 
-    public nextUint256(): T {
-        return this.nextBytes(32)
+    public nextUint256(side = Side.Front): T {
+        return this.nextBytes(32, side)
     }
 }
