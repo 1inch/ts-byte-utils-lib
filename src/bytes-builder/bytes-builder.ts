@@ -10,7 +10,7 @@ import {trim0x} from '../utils'
 export class BytesBuilder {
     private bytes: string
 
-    constructor(init?: string | BN) {
+    constructor(init?: string | BN | bigint) {
         if (init === undefined) {
             this.bytes = '0x'
 
@@ -22,7 +22,8 @@ export class BytesBuilder {
 
             this.bytes = init
         } else {
-            this.bytes = init.toHex()
+            const initBn = init instanceof BN ? init : new BN(init)
+            this.bytes = initBn.toHex()
         }
     }
 
@@ -33,7 +34,7 @@ export class BytesBuilder {
         return Number(this.bytes.length / 2 - 1)
     }
 
-    public addAddress(address: string | BN): this {
+    public addAddress(address: string | BN | bigint): this {
         if (typeof address === 'string') {
             assert(
                 isHexBytes(address) && address.length === 42,
@@ -42,9 +43,10 @@ export class BytesBuilder {
 
             this.append(address)
         } else {
-            assert(address.value <= UINT_160_MAX, 'Invalid address: too big')
+            const addressBN = address instanceof BN ? address : new BN(address)
+            assert(addressBN.value <= UINT_160_MAX, 'Invalid address: too big')
 
-            this.append(address.toHex(40))
+            this.append(addressBN.toHex(40))
         }
 
         return this
@@ -58,39 +60,39 @@ export class BytesBuilder {
         return this
     }
 
-    public addByte(byte: string | BN): this {
+    public addByte(byte: string | BN | bigint): this {
         return this.addNBytes(byte, 1)
     }
 
-    public addUint8(val: string | BN): this {
+    public addUint8(val: string | BN | bigint): this {
         return this.addNBytes(val, 1)
     }
 
-    public addUint16(val: string | BN): this {
+    public addUint16(val: string | BN | bigint): this {
         return this.addNBytes(val, 2)
     }
 
-    public addUint24(val: string | BN): this {
+    public addUint24(val: string | BN | bigint): this {
         return this.addNBytes(val, 3)
     }
 
-    public addUint32(val: string | BN): this {
+    public addUint32(val: string | BN | bigint): this {
         return this.addNBytes(val, 4)
     }
 
-    public addUint64(val: string | BN): this {
+    public addUint64(val: string | BN | bigint): this {
         return this.addNBytes(val, 8)
     }
 
-    public addUint128(val: string | BN): this {
+    public addUint128(val: string | BN | bigint): this {
         return this.addNBytes(val, 16)
     }
 
-    public addUint160(val: string | BN): this {
+    public addUint160(val: string | BN | bigint): this {
         return this.addNBytes(val, 20)
     }
 
-    public addUint256(val: string | BN): this {
+    public addUint256(val: string | BN | bigint): this {
         return this.addNBytes(val, 32)
     }
 
@@ -114,19 +116,20 @@ export class BytesBuilder {
         this.bytes += trim0x(bytes)
     }
 
-    private addNBytes(bytes: string | BN, n: number): this {
+    private addNBytes(bytes: string | BN | bigint, n: number): this {
         if (typeof bytes === 'string') {
             assert(isHexBytes(bytes), 'Invalid value: not bytes hex string')
             assert(bytes.length === 2 + n * 2, 'Invalid value: bad length')
 
             this.append(bytes)
         } else {
+            const bytesBn = bytes instanceof BN ? bytes : new BN(bytes)
             assert(
-                bytes.value <= (1n << (8n * BigInt(n))) - 1n,
+                bytesBn.value <= (1n << (8n * BigInt(n))) - 1n,
                 'Invalid value: too long'
             )
 
-            this.append(bytes.toHex(n * 2))
+            this.append(bytesBn.toHex(n * 2))
         }
 
         return this
