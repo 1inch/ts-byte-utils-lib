@@ -1,7 +1,7 @@
 import assert from 'assert'
 import {BN} from '../bn/bn'
 import {isHexBytes} from '../validations'
-import {UINT_8_MAX as UINT_160_MAX} from '../constants'
+import {UINT_160_MAX} from '../constants'
 import {trim0x} from '../utils'
 
 /**
