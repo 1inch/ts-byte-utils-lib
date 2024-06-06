@@ -73,6 +73,10 @@ export class BytesIter<T> {
         return this.ResultType(add0x(bytes))
     }
 
+    public nextAddress(side = Side.Front): T {
+        return this.nextBytes(40, side)
+    }
+
     public nextUint8(side = Side.Front): T {
         return this.nextByte(side)
     }
