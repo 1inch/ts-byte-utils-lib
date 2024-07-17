@@ -39,8 +39,10 @@ Check that string is valid hex with 0x prefix and length is even
 - [UINT_24_MAX](#gear-uint_24_max)
 - [UINT_32_MAX](#gear-uint_32_max)
 - [UINT_40_MAX](#gear-uint_40_max)
+- [UINT_48_MAX](#gear-uint_48_max)
 - [UINT_80_MAX](#gear-uint_80_max)
 - [UINT_160_MAX](#gear-uint_160_max)
+- [UINT_128_MAX](#gear-uint_128_max)
 - [UINT_256_MAX](#gear-uint_256_max)
 
 ### :gear: UINT_8_MAX
@@ -67,6 +69,12 @@ Check that string is valid hex with 0x prefix and length is even
 | ---------- | ---------- |
 | `UINT_40_MAX` | `bigint` |
 
+### :gear: UINT_48_MAX
+
+| Constant | Type |
+| ---------- | ---------- |
+| `UINT_48_MAX` | `bigint` |
+
 ### :gear: UINT_80_MAX
 
 | Constant | Type |
@@ -78,6 +86,12 @@ Check that string is valid hex with 0x prefix and length is even
 | Constant | Type |
 | ---------- | ---------- |
 | `UINT_160_MAX` | `bigint` |
+
+### :gear: UINT_128_MAX
+
+| Constant | Type |
+| ---------- | ---------- |
+| `UINT_128_MAX` | `bigint` |
 
 ### :gear: UINT_256_MAX
 
@@ -272,6 +286,7 @@ Class to iterate through bytes string by parsing individual bytes
 - [isEmpty](#gear-isempty)
 - [nextByte](#gear-nextbyte)
 - [nextBytes](#gear-nextbytes)
+- [nextAddress](#gear-nextaddress)
 - [nextUint8](#gear-nextuint8)
 - [nextUint16](#gear-nextuint16)
 - [nextUint24](#gear-nextuint24)
@@ -310,55 +325,61 @@ Returns all not consumed bytes
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextByte` | `() => T` |
+| `nextByte` | `(side?: Side) => T` |
 
 #### :gear: nextBytes
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextBytes` | `(n: number) => T` |
+| `nextBytes` | `(n: number, side?: Side) => T` |
+
+#### :gear: nextAddress
+
+| Method | Type |
+| ---------- | ---------- |
+| `nextAddress` | `(side?: Side) => T` |
 
 #### :gear: nextUint8
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint8` | `() => T` |
+| `nextUint8` | `(side?: Side) => T` |
 
 #### :gear: nextUint16
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint16` | `() => T` |
+| `nextUint16` | `(side?: Side) => T` |
 
 #### :gear: nextUint24
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint24` | `() => T` |
+| `nextUint24` | `(side?: Side) => T` |
 
 #### :gear: nextUint32
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint32` | `() => T` |
+| `nextUint32` | `(side?: Side) => T` |
 
 #### :gear: nextUint128
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint128` | `() => T` |
+| `nextUint128` | `(side?: Side) => T` |
 
 #### :gear: nextUint160
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint160` | `() => T` |
+| `nextUint160` | `(side?: Side) => T` |
 
 #### :gear: nextUint256
 
 | Method | Type |
 | ---------- | ---------- |
-| `nextUint256` | `() => T` |
+| `nextUint256` | `(side?: Side) => T` |
 
 
 ## :factory: BytesBuilder
@@ -385,7 +406,7 @@ Helper class to build an arbitrary bytes sequence
 
 | Method | Type |
 | ---------- | ---------- |
-| `addAddress` | `(address: string or BN) => this` |
+| `addAddress` | `(address: string or bigint or BN) => this` |
 
 #### :gear: addBytes
 
@@ -397,55 +418,55 @@ Helper class to build an arbitrary bytes sequence
 
 | Method | Type |
 | ---------- | ---------- |
-| `addByte` | `(byte: string or BN) => this` |
+| `addByte` | `(byte: string or bigint or BN) => this` |
 
 #### :gear: addUint8
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint8` | `(val: string or BN) => this` |
+| `addUint8` | `(val: string or bigint or BN) => this` |
 
 #### :gear: addUint16
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint16` | `(val: string or BN) => this` |
+| `addUint16` | `(val: string or bigint or BN) => this` |
 
 #### :gear: addUint24
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint24` | `(val: string or BN) => this` |
+| `addUint24` | `(val: string or bigint or BN) => this` |
 
 #### :gear: addUint32
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint32` | `(val: string or BN) => this` |
+| `addUint32` | `(val: string or bigint or BN) => this` |
 
 #### :gear: addUint64
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint64` | `(val: string or BN) => this` |
+| `addUint64` | `(val: string or bigint or BN) => this` |
 
 #### :gear: addUint128
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint128` | `(val: string or BN) => this` |
+| `addUint128` | `(val: string or bigint or BN) => this` |
 
 #### :gear: addUint160
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint160` | `(val: string or BN) => this` |
+| `addUint160` | `(val: string or bigint or BN) => this` |
 
 #### :gear: addUint256
 
 | Method | Type |
 | ---------- | ---------- |
-| `addUint256` | `(val: string or BN) => this` |
+| `addUint256` | `(val: string or bigint or BN) => this` |
 
 #### :gear: asBigInt
 
