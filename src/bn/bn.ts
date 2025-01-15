@@ -34,7 +34,7 @@ export class BN {
         return new BN(this.value - other.value)
     }
 
-    public setBit(n: bigint, value: 1 | 0): BN {
+    public setBit(n: bigint, value: 1 | 0 | true | false): BN {
         if (value) {
             return new BN(this.value | (1n << n))
         }
