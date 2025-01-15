@@ -34,7 +34,7 @@ export class BytesIter<T> {
         return new BytesIter(bytes, BigInt)
     }
 
-    static String(bytes: string): BytesIter<string> {
+    static HexString(bytes: string): BytesIter<string> {
         return new BytesIter(bytes, String)
     }
 
