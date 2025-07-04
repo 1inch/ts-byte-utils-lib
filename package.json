@@ -1,6 +1,6 @@
 {
   "name": "@1inch/byte-utils",
-  "version": "2.2.0",
+  "version": "3.1.0",
   "description": "Contains helpers to work with bytes",
   "author": "@1inch",
   "license": "MIT",
@@ -53,7 +53,14 @@
     "generate-changelog": "^1.8.0",
     "tsdoc-markdown": "0.3.0"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "assert": "^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "assert": {
+      "optional": true
+    }
+  },
   "engines": {
     "node": ">=20"
   },

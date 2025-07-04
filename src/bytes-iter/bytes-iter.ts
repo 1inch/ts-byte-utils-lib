@@ -34,7 +34,7 @@ export class BytesIter<T> {
         return new BytesIter(bytes, BigInt)
     }
 
-    static String(bytes: string): BytesIter<string> {
+    static HexString(bytes: string): BytesIter<string> {
         return new BytesIter(bytes, String)
     }
 
@@ -71,6 +71,10 @@ export class BytesIter<T> {
         this.bytes = isFront ? this.bytes.slice(cnt) : this.bytes.slice(0, -cnt)
 
         return this.ResultType(add0x(bytes))
+    }
+
+    public nextAddress(side = Side.Front): T {
+        return this.nextBytes(40, side)
     }
 
     public nextUint8(side = Side.Front): T {
