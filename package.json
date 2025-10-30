@@ -1,6 +1,6 @@
 {
   "name": "@1inch/byte-utils",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Contains helpers to work with bytes",
   "author": "@1inch",
   "license": "MIT",
