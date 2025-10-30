@@ -80,6 +80,14 @@ export class BytesBuilder {
         return this.addNBytes(val, 4)
     }
 
+    public addUint40(val: string | BN | bigint): this {
+        return this.addNBytes(val, 5)
+    }
+
+    public addUint48(val: string | BN | bigint): this {
+        return this.addNBytes(val, 6)
+    }
+
     public addUint64(val: string | BN | bigint): this {
         return this.addNBytes(val, 8)
     }
