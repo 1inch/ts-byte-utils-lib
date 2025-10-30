@@ -92,6 +92,10 @@ export class BytesBuilder {
         return this.addNBytes(val, 8)
     }
 
+    public addUint96(val: string | BN | bigint): this {
+        return this.addNBytes(val, 12)
+    }
+
     public addUint128(val: string | BN | bigint): this {
         return this.addNBytes(val, 16)
     }
