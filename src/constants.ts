@@ -6,6 +6,7 @@ export const UINT_40_MAX = (1n << 40n) - 1n
 export const UINT_48_MAX = (1n << 48n) - 1n
 export const UINT_64_MAX = (1n << 64n) - 1n
 export const UINT_80_MAX = (1n << 80n) - 1n
+export const UINT_96_MAX = (1n << 96n) - 1n
 export const UINT_160_MAX = (1n << 160n) - 1n
 export const UINT_128_MAX = (1n << 128n) - 1n
 export const UINT_256_MAX = (1n << 256n) - 1n
