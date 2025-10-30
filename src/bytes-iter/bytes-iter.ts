@@ -93,6 +93,10 @@ export class BytesIter<T> {
         return this.nextBytes(4, side)
     }
 
+    public nextUint64(side = Side.Front): T {
+        return this.nextBytes(8, side)
+    }
+
     public nextUint128(side = Side.Front): T {
         return this.nextBytes(16, side)
     }
